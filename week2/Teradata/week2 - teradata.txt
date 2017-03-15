@@ -1,0 +1,49 @@
+##Q5
+HELP TABLE strinfo;
+##Q6
+SELECT * FROM strinfo WHERE store IS NULL;
+SELECT * FROM strinfo WHERE city IS NULL;
+SELECT * FROM strinfo WHERE state IS NULL;
+SELECT * FROM strinfo WHERE zip IS NULL;
+##Q7
+HELP TABLE trnsact;
+SELECT TOP 10 orgprice FROM trnsact WHERE sku = 3631365 ORDER BY orgprice DESC;
+##Q8
+HELP TABLE skuinfo;
+SELECT TOP 10 sku, color FROM skuinfo WHERE brand = 'LIZ CLAI' ORDER BY sku DESC;
+##Q10
+SELECT TOP 10 sku,orgprice FROM trnsact ORDER BY orgprice DESC;
+##Q11
+SELECT DISTINCT state FROM strinfo;
+##Q12
+SELECT DISTINCT deptdesc FROM deptinfo WHERE deptdesc LIKE 'e%';
+##Q13
+SELECT TOP 10 saledate FROM trnsact WHERE sprice <> orgprice ORDER BY saledate DESC;
+SELECT TOP 5 (orgprice - sprice) AS margin WHERE saledate = '2004-08-01' FROM trnsact ORDER BY margin DESC;
+##Q14
+SELECT TOP 10 orgprice, sprice, register,saledate FROM trnsact 
+WHERE saledate BETWEEN '2004-08-01' AND '2004-08-10' ORDER BY orgprice, sprice DESC;
+##Q15
+SELECT DISTINCT brand FROM skuinfo WHERE brand LIKE '%liz%';
+##Q16
+SELECT store,city FROM store_msa WHERE city IN ('little rock','memphis','tulsa') ORDER BY store ASC;
+
+
+
+SELECT DISTINCT * FROM deptinfo; 
+SELECT DISTINCT * FROM skstinfo; 
+SELECT DISTINCT * FROM skstinfo_fix; 
+SELECT DISTINCT * FROM skuinfo; 
+SELECT DISTINCT * FROM store_msa; 
+SELECT DISTINCT * FROM strinfo; 
+SELECT DISTINCT * FROM trnsact; 
+
+HELP TABLE trnsact;
+SELECT  * FROM trnsact WHERE amt <> sprice;
+SELECT  * FROM trnsact WHERE orgprice = 0;
+SELECT TOP 10 sprice,saledate FROM trnsact;
+
+
+HELP TABLE skstinfo;
+SELECT  * FROM skstinfo WHERE cost = 0 AND retail = 0;
+SELECT  * FROM skstinfo WHERE cost  > retail;
